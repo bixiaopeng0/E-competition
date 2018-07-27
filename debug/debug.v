@@ -1,0 +1,62 @@
+/*-----------------------------------------------------------------------
+* Date          :       2018/7/21 21:27:07  
+* Version       :       1.0
+* Description   :       Design for.
+* --------------------------------------------------------------------*/
+
+module  debug
+(
+    //clk interface
+        input                   clk                     ,      
+        input                   rst_n                   ,      
+    //ram   interface
+        output                  vga_clk                 ,
+        output    reg   [12:0]  rd_ram                  ,
+        input           [ 9:0]  q_ram                   ,
+        output                  flag
+
+);
+
+
+//--------------------------------
+////Funtion : define
+
+reg     [31:0]          cnt_time                    ;
+parameter               TIME_1MS    =   500_000     ;
+
+always @(posedge clk or negedge rst_n)
+begin
+    if(!rst_n)
+        cnt_time <= 'd0;
+    else if(cnt_time >= TIME_1MS)
+        cnt_time <= 'd0;
+    else
+        cnt_time <= cnt_time + 1'b1;
+end
+
+
+always @(posedge clk or negedge rst_n)
+begin
+    if(!rst_n)
+        rd_ram <= 'd0;
+    else if(cnt_time <= 13'd2048)
+        rd_ram <= rd_ram + 1'b1;
+	else
+		rd_ram <= 'd0;
+end
+
+
+
+assign  flag = (cnt_time == 1'b0) ? 1'b1 : 1'b0;
+
+assign	vga_clk	=	clk;
+
+
+
+
+endmodule
+
+
+
+
+

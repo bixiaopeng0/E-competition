@@ -1,0 +1,37 @@
+/*-----------------------------------------------------------------------
+* Date          :       2018/7/20 15:32:37  
+* Version       :       1.0
+* Description   :       Design for.
+* --------------------------------------------------------------------*/
+
+module  pro_2018a
+(
+        //clk   interface
+        input                   clk                     ,       
+        input                   rst_n                   ,      
+
+       //ad     interface
+        input       [ 9:0]      ad_data                 ,
+        output                  ad_clk                  
+);
+
+
+//--------------------------------
+////Funtion : define
+
+
+//--------------------------------
+////Funtion :  display interface
+
+
+//--------------------------------
+////Funtion : fft interface
+
+
+
+
+endmodule
+
+
+
+
